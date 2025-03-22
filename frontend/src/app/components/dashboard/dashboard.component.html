@@ -1,0 +1,81 @@
+<div class="dashboard-container">
+    <h1>Welcome to the Quiz Game Dashboard</h1>
+
+    <!-- Create Game Section -->
+    <div>
+        <button ng-click="vm.showCreateGameModal()">Create New Game</button>
+        <button ng-click="vm.showCreateTeamModal()">Create Team</button>
+        <button ng-click="vm.showAddQuestionModal()">Add Question</button>
+        <button ng-click="vm.startQuiz()">Start Quiz</button> <!-- Start Quiz Button -->
+    </div>
+
+    <!-- Game Information -->
+
+
+    <!-- Create Game Modal -->
+    <div class="modal" ng-if="vm.showGameModal">
+        <div class="modal-content">
+            <h2>Create New Game</h2>
+            <label>Quiz Name:</label>
+            <input type="text" ng-model="vm.newGame.name" required />
+            <label>Quiz Description:</label>
+            <input type="text" ng-model="vm.newGame.description" required />
+            <button ng-click="vm.createGame()">Create</button>
+            <button ng-click="vm.closeGameModal()">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Create Team Modal -->
+    <div class="modal" ng-if="vm.showTeamModal">
+        <div class="modal-content">
+            <h2>Create Team</h2>
+            <label>Team Name:</label>
+            <input type="text" ng-model="vm.newTeam.name" required />
+            <label>Quiz Title:</label>
+            <input type="text" ng-model="vm.newTeam.quizTitle" required />
+            <label>Team Members:</label>
+            <input type="text" ng-model="vm.newTeam.members" required placeholder="Comma-separated names" />
+            <button ng-click="vm.createTeam()">Create</button>
+            <button ng-click="vm.closeTeamModal()">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Add Question Modal -->
+    <!-- Add Question Modal -->
+<div class="modal" ng-if="vm.showQuestionModal">
+    <div class="modal-content">
+        <h2>Add Question</h2>
+        
+        <!-- Add Quiz Title input -->
+        <label>Quiz Title:</label>
+        <input type="text" ng-model="vm.newQuestion.quizTitle" required />
+        
+        <label>Question:</label>
+        <input type="text" ng-model="vm.newQuestion.text" required />
+        
+        <label>Option A:</label>
+        <input type="text" ng-model="vm.newQuestion.optionA" required />
+        
+        <label>Option B:</label>
+        <input type="text" ng-model="vm.newQuestion.optionB" required />
+        
+        <label>Option C:</label>
+        <input type="text" ng-model="vm.newQuestion.optionC" required />
+        
+        <label>Option D:</label>
+        <input type="text" ng-model="vm.newQuestion.optionD" required />
+        
+        <label>Correct Option:</label>
+        <select ng-model="vm.newQuestion.correctOption" required>
+            <option value="A">Option A</option>
+            <option value="B">Option B</option>
+            <option value="C">Option C</option>
+            <option value="D">Option D</option>
+        </select>
+        
+        <button ng-click="vm.addQuestion()">Add</button>
+        <button ng-click="vm.closeQuestionModal()">Cancel</button>
+    </div>
+</div>
+
+</div>

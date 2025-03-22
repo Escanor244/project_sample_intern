@@ -1,0 +1,42 @@
+<div>
+    <h2>Quiz Game</h2>
+
+    <div ng-if="currentQuestion">
+        <h3>{{ currentQuestion.question_text }}</h3>
+        <ul>
+            <li ng-repeat="option in ['A', 'B', 'C', 'D']">
+                <label>
+                    <input type="radio" ng-model="team.answer" value="{{option}}" />
+                    {{ option }} - {{ currentQuestion['option_' + option.toLowerCase()] }}
+                </label>
+            </li>
+        </ul>
+    </div>
+
+    <h3>Teams</h3>
+    <div ng-repeat="team in teams">
+        <p>{{ team.team_name }}</p>
+        <input type="text" ng-model="team.answer" placeholder="Enter A/B/C/D" />
+    </div>
+
+    <button ng-click="nextQuestion()">
+        {{ currentQuestionIndex < questions.length - 1 ? 'Next' : 'Submit' }}
+    </button>
+
+     <!-- Leaderboard Button -->
+     <button ng-click="showLeaderboard()">Show Leaderboard</button>
+
+     <!-- Leaderboard Popup -->
+     <div class="popup" ng-if="isLeaderboardVisible">
+         <div class="popup-content">
+             <h3>Leaderboard</h3>
+             <ul>
+                 <li ng-repeat="team in leaderboard">
+                     <strong>{{ team.team_name }}</strong>: {{ team.score }} points
+                 </li>
+             </ul>
+             <button ng-click="closeLeaderboard()">Close</button>
+         </div>
+     </div>
+</div>
+
